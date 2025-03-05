@@ -6,13 +6,13 @@ mod stacks;
 //
 
 use nom::{
+    IResult,
     character::{
         self,
         complete::{newline, space0},
     },
     multi::many1,
     sequence::{delimited, terminated},
-    IResult,
 };
 use procedure::Procedure;
 use std::collections::VecDeque;

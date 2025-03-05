@@ -20,8 +20,13 @@ pub fn part_one(input: &str) -> Option<u32> {
 
     directories_sizes(terminal_output)
         .iter()
-        .filter(|(_, &size)| size < 100_000)
-        .map(|(_, &size)| size as u32)
+        .filter_map(|(_, &size)| {
+            if size < 100_000 {
+                Some(size as u32)
+            } else {
+                None
+            }
+        })
         .map(Some)
         .sum()
 }
@@ -42,8 +47,13 @@ pub fn part_two(input: &str) -> Option<u32> {
 
     sizes
         .iter()
-        .filter(|(_, &size)| size >= min_space_to_delete)
-        .map(|(_, &size)| size as u32)
+        .filter_map(|(_, &size)| {
+            if size >= min_space_to_delete {
+                Some(size as u32)
+            } else {
+                None
+            }
+        })
         .min()
 }
 

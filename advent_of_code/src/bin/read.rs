@@ -30,7 +30,9 @@ fn main() {
     };
 
     if advent_of_code::check().is_err() {
-        eprintln!("command \"aoc\" not found or not callable. Try running \"cargo install aoc-cli\" to install it.");
+        eprintln!(
+            "command \"aoc\" not found or not callable. Try running \"cargo install aoc-cli\" to install it."
+        );
         process::exit(1);
     }
 

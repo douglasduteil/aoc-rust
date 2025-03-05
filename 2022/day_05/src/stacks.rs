@@ -3,13 +3,13 @@
 use std::collections::VecDeque;
 
 use nom::{
+    IResult,
     branch::alt,
     bytes::complete::tag,
     character::complete::{anychar, newline},
     combinator::value,
     multi::{fold_many1, separated_list1},
     sequence::{delimited, terminated},
-    IResult,
 };
 
 //
@@ -20,9 +20,8 @@ pub fn parse(input: &str) -> IResult<&str, Vec<VecDeque<char>>> {
         Vec::new,
         |mut col: Vec<VecDeque<char>>, row| {
             row.into_iter().enumerate().for_each(|(i, name)| {
-                match col.get(i) {
-                    None => col.push(VecDeque::new()),
-                    Some(_) => (),
+                if col.get(i).is_none() {
+                    col.push(VecDeque::new())
                 }
                 if name.is_alphanumeric() {
                     col[i].push_back(name);
