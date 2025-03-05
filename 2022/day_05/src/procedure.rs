@@ -1,11 +1,11 @@
 //
 
 use nom::{
+    IResult,
     bytes::complete::tag,
     character::complete::{newline, space1, u8},
     multi::separated_list1,
     sequence::{delimited, preceded, tuple},
-    IResult,
 };
 
 //

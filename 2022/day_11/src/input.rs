@@ -3,15 +3,15 @@
 use std::str::FromStr;
 
 use nom::{
+    Finish,
     branch::{alt, permutation},
     bytes::complete::tag,
     character::complete::{digit1, multispace1, newline, space0, space1},
     combinator::map,
-    error::{context, convert_error, VerboseError},
+    error::{VerboseError, context, convert_error},
     multi::{count, separated_list0, separated_list1},
     number::complete::float,
     sequence::{delimited, preceded, separated_pair, terminated, tuple},
-    Finish,
 };
 
 use crate::monkey::{Item, Monkey};
